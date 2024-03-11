@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import "./contact.scss";
 import { motion, useInView } from "framer-motion";
-import emailjs from "@emailjs/browser";
+
 
 const variants = {
   initial: {
@@ -26,25 +26,7 @@ const Contact = () => {
 
   const isInView = useInView(ref, { margin: "-100px" });
 
-  const sendEmail = (e) => {
-    e.preventDefault();
-
-    emailjs
-      .sendForm(
-        "service_94y20xo",
-        "template_v10u2oh",
-        formRef.current,
-        "pX_2hasGmGcuvjXIW"
-      )
-      .then(
-        (result) => {
-          setSuccess(true)
-        },
-        (error) => {
-          setError(true);
-        }
-      );
-  };
+ 
 
   return (
     <motion.div
@@ -101,7 +83,6 @@ const Contact = () => {
         </motion.div>
         <motion.form
           ref={formRef}
-          onSubmit={sendEmail}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 4, duration: 1 }}
@@ -110,8 +91,7 @@ const Contact = () => {
           <input type="email" required placeholder="Email" name="email"/>
           <textarea rows={8} placeholder="Message" name="message"/>
           <button>Submit</button>
-          {error && "Error"}
-          {success && "Success"}
+
         </motion.form>
       </div>
     </motion.div>
@@ -125,6 +105,9 @@ export default Contact;
 //32 add svg inside form container, next add hidden animation (73-78), add to svg pos absolute 
 // and place it on the contact form so that while it is visible it overlaps it
 //33 add mirrow animation to form container (105-107)
+//34!!! add stroke property to svg styles, edit <path> to <motion.path> and add (83-85) +
+//+ import useView, add use ref (20, 51) then (27) 
+//35 create cursor component
 
 
 // 2:07:20

@@ -1,4 +1,5 @@
 import "./app.scss"
+import Cursor from "./components/Cursor/Cursor";
 import Contact from "./components/contact/Contact";
 import Hero from "./components/hero/Hero";
 import Navbar from "./components/navbar/Navbar";
@@ -9,6 +10,7 @@ import Services from "./components/services/Services";
 const App = () => {
   return (
     <div>
+      <Cursor />
       <section id="Homepage">
         <Navbar />
         <Hero />
